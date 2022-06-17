@@ -18,9 +18,9 @@ int main(int ac, char **av, char **envp)
 	free(cmd1[0]);
 	free(cmd2[0]);
 	cmd1[0] = check_commands(av[2], envp);
-//	arranjar_cmd(cmd1);
+	arranjar_cmd(cmd1);
 	cmd2[0] = check_commands(av[3], envp);
-//	arranjar_cmd(cmd2);
+	arranjar_cmd(cmd2);
 	if (pipe(fd) == -1)
 		exit(0);
 	pid1 = fork();
@@ -42,7 +42,7 @@ int main(int ac, char **av, char **envp)
 	pid2 = fork();
 	if (pid2 == 0)
 	{
-		fdout = open(av[4], O_RDWR);
+		fdout = open(av[4], O_TRUNC | O_CREAT | O_RDWR, 777);
 		dup2(fdout, 1);
 		dup2(fd[0], 0);
 		close(fd[0]);

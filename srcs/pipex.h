@@ -6,7 +6,7 @@
 /*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 14:31:50 by fde-albe          #+#    #+#             */
-/*   Updated: 2022/06/14 15:05:41 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/06/15 13:01:42 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ char    *ft_substr(char const *s, unsigned int start, size_t len);
 char    *ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1,	char const *s2);
 void	arranjar_cmd(char **cmd);
-
+char	*ft_strchr(const char *s, int c);
 #endif

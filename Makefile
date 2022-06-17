@@ -6,12 +6,12 @@
 #    By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 10:31:48 by fde-albe          #+#    #+#              #
-#    Updated: 2022/06/08 17:01:58 by fde-albe         ###   ########.fr        #
+#    Updated: 2022/06/15 13:01:59 by rdas-nev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=		pipex.c pipex_utils.c ft_memcmp.c ft_split.c ft_strlen.c \
-					ft_substr.c ft_strdup.c ft_strjoin.c \
+					ft_substr.c ft_strdup.c ft_strjoin.c ft_strchr.c \
 
 OBJS 		=		$(addprefix objs/,$(SRCS:.c=.o))
 
