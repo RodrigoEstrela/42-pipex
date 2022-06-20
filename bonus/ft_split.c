@@ -6,11 +6,11 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:58 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/06/20 15:09:00 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:51:15 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 char	*ft_strndup(const char *s1, int start, int end)
 {

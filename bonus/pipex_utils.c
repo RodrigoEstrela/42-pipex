@@ -6,11 +6,11 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 11:47:40 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/06/20 14:14:52 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:53:20 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 char	*ft_str_cmdpath(const char *s1)
 {

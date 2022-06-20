@@ -6,11 +6,11 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:09:28 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/06/20 15:09:30 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:52:23 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
