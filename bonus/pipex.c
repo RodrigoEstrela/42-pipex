@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/06/20 17:01:50 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:31:28 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ int	main(int ac, char **av, char **envp)
 		free_cmds(cmds);
 	}
 	free(cmds);
-	system("leaks -fullContent pipex");
+//	system("leaks -fullContent pipex");
 	exit(0);
 } 
