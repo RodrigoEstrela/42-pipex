@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 14:31:50 by fde-albe          #+#    #+#             */
-/*   Updated: 2022/06/20 15:48:34 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:05:27 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include "../42-get_next_line/get_next_line.h"
 
 typedef struct s_cmds
 {
 	char	**cmd1;
-	char	**cmd2;
+	int		pid1;
 }			t_cmds;
 
 char	*check_commands(char *raw_cmd, char **envp);
@@ -48,8 +49,8 @@ void	arranjar_cmd(char **cmd);
 
 char	*ft_strchr(const char *s, int c);
 
-void	child_one(t_cmds *cmds, char *str, int fd[2], char **envp);
+void	child_one(t_cmds *cmds, int fd[2], char **envp);
 
-void	child_two(t_cmds *cmds, char *str, int fd[2], char **envp);
+int     ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
