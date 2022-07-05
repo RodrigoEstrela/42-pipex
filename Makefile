@@ -16,13 +16,14 @@ SRCS		=		pipex.c pipex_utils.c ft_memcmp.c ft_split.c ft_strlen.c \
 
 OBJS 		=		$(addprefix objs/,$(SRCS:.c=.o))
 
-BONUS_SRCS	=		pipex.c pipex_utils.c ft_memcmp.c ft_split.c ft_strlen.c \
-					ft_substr.c ft_strdup.c ft_strjoin.c ft_strchr.c children.c \
-					arranjar_cmd.c ficheirodasbarraspontoc.c \
+BONUS_SRCS	=		pipex.c pipex_utils.c ft_memcmp.c ft_split.c \
+					ft_substr.c ft_strdup.c children.c \
+					arranjar_cmd.c ficheirodasbarraspontoc.c  heredoc.c \
+				get_next_line.c get_next_line_utils.c \
 
 OBJS_BONUS	=		$(addprefix objs_bonus/,$(BONUS_SRCS:.c=.o))
 
-CFLAGS		=		-Wall -Wextra -Werror -g
+CFLAGS		=		#-Wall -Wextra -Werror -g
 
 RM			=		rm -f
 

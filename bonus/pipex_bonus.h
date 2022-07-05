@@ -17,7 +17,8 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <fcntl.h>
-# include "../42-get_next_line/get_next_line.h"
+
+# define BUFFER_SIZE 10
 
 typedef struct s_cmds
 {
@@ -37,7 +38,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 char	*ft_strdup(const char *s1);
 
-char	*ft_strjoin(char const *s1,	char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 
 int		is_barra_e_hihfen(char *s1, char *s2);
 
@@ -52,5 +53,16 @@ char	*ft_strchr(const char *s, int c);
 void	child_one(t_cmds *cmds, int fd[2], char **envp);
 
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
+
+void	ft_here_doc(char *limiter);
+
+char	*get_next_line(int fd);
+
+char	*ft_exstrchr(char *s);
+
+char	*ft_strnldup(char *s1);
+
+size_t  ft_strlcpy(char *dst, char *src, size_t size);
+
 
 #endif

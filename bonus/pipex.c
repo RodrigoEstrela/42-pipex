@@ -40,11 +40,20 @@ int	main(int ac, char **av, char **envp)
 	int		fd2;
 
 	cmds = malloc(sizeof(t_cmds) * 1);
-	if (ft_strncmp(av[1], "here_doc", 8))
-COISO
-	i = 1;
-	fd1 = open(av[1], O_RDWR);
-	fd2 = open(av[ac - 1], O_RDWR);
+	
+	if (ft_strncmp(av[1], "here_doc", ft_strlen("here_doc")) == 0)
+	{
+		i = 2;
+		fd2 = open(av[ac - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
+		ft_here_doc(av[2]);
+	}
+	
+	else
+	{
+		i = 1;
+		fd1 = open(av[1], O_RDONLY, 0777);
+		fd2 = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	}
 	while (++i < ac - 2)
 	{
 		cmds = cmds_initializer(cmds, av, envp, i);
@@ -53,8 +62,8 @@ COISO
 		child_one(cmds, fd, envp);
 		free_cmds(cmds);
 	}
+
 	cmds = cmds_initializer(cmds, av, envp, ac - 2);
-	fd2 = open(av[ac - 1], O_RDWR);
 	dup2(fd2, 1);
 	execve(cmds->cmd1[0], cmds->cmd1, envp);
 	free(cmds);
