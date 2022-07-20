@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/20 12:38:03 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:27:34 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av, char **envp)
 	int		fd2;
 
 	cmds = malloc(sizeof(t_cmds) * 1);
-	if (ft_strncmp(av[1], "here_doc", 8) == 0)
+	if (ft_strncmp(av[1], "here_doc", ft_strlen("here_doc")) == 0)
 	{
 		i = 2;
 		fd2 = open(av[ac - 1], O_WRONLY | O_CREAT | O_APPEND, 777);
