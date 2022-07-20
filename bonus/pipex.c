@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/04 15:22:32 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/20 12:38:03 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ void	free_cmds(t_cmds *cmds)
 	free(cmds->cmd1);
 }
 
+void	do_cmds_things(t_cmds *cmds, char **envp, int *fd)
+{
+	if (pipe(fd) == -1)
+		exit(0);
+	child_one(cmds, fd, envp);
+	free_cmds(cmds);
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	t_cmds	*cmds;
@@ -40,29 +48,23 @@ int	main(int ac, char **av, char **envp)
 	int		fd2;
 
 	cmds = malloc(sizeof(t_cmds) * 1);
-	
-	if (ft_strncmp(av[1], "here_doc", ft_strlen("here_doc")) == 0)
+	if (ft_strncmp(av[1], "here_doc", 8) == 0)
 	{
 		i = 2;
-		fd2 = open(av[ac - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
+		fd2 = open(av[ac - 1], O_WRONLY | O_CREAT | O_APPEND, 777);
 		ft_here_doc(av[2]);
 	}
-	
 	else
 	{
 		i = 1;
-		fd1 = open(av[1], O_RDONLY, 0777);
-		fd2 = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		fd1 = open(av[1], O_RDONLY, 777);
+		fd2 = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 777);
 	}
 	while (++i < ac - 2)
 	{
 		cmds = cmds_initializer(cmds, av, envp, i);
-		if (pipe(fd) == -1)
-			exit(0);
-		child_one(cmds, fd, envp);
-		free_cmds(cmds);
+		do_cmds_things(cmds, envp, fd);
 	}
-
 	cmds = cmds_initializer(cmds, av, envp, ac - 2);
 	dup2(fd2, 1);
 	execve(cmds->cmd1[0], cmds->cmd1, envp);

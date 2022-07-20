@@ -6,7 +6,7 @@
 /*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 14:31:50 by fde-albe          #+#    #+#             */
-/*   Updated: 2022/07/04 15:05:27 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:27:09 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_strchr(const char *s, int c);
 
 void	child_one(t_cmds *cmds, int fd[2], char **envp);
 
-int     ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void	ft_here_doc(char *limiter);
 
@@ -62,7 +62,6 @@ char	*ft_exstrchr(char *s);
 
 char	*ft_strnldup(char *s1);
 
-size_t  ft_strlcpy(char *dst, char *src, size_t size);
-
+size_t	ft_strlcpy(char *dst, char *src, size_t size);
 
 #endif

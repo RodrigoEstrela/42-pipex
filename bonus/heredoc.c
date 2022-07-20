@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/04 15:00:51 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:29:26 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	ft_here_doc(char *limiter)
 {
-	int	fd[2];
-	int	reader;
+	int		fd[2];
+	int		reader;
 	char	*line;
-	
-	if(pipe(fd) == -1)
+
+	if (pipe(fd) == -1)
 		exit(0);
 	reader = fork();
 	if (reader == 0)
 	{	
 		close(fd[0]);
 		line = get_next_line(0);
-		while(ft_strncmp(line, limiter, ft_strlen(limiter)))
+		while (ft_strncmp(line, limiter, ft_strlen(limiter)))
 		{
 			write(fd[1], line, ft_strlen(line));
 			free(line);
@@ -36,7 +36,7 @@ void	ft_here_doc(char *limiter)
 	}
 	else
 	{
-		close(fd[1]);	
+		close(fd[1]);
 		dup2(fd[0], 0);
 	}
 }

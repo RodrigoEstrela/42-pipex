@@ -6,7 +6,7 @@
 #    By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 10:31:48 by fde-albe          #+#    #+#              #
-#    Updated: 2022/06/20 16:15:33 by rdas-nev         ###   ########.fr        #
+#    Updated: 2022/07/20 11:47:40 by rdas-nev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ BONUS_SRCS	=		pipex.c pipex_utils.c ft_memcmp.c ft_split.c \
 
 OBJS_BONUS	=		$(addprefix objs_bonus/,$(BONUS_SRCS:.c=.o))
 
-CFLAGS		=		#-Wall -Wextra -Werror -g
+CFLAGS		=		-Wall -Wextra -Werror -g
 
 RM			=		rm -f
 
