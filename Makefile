@@ -6,7 +6,7 @@
 #    By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 10:31:48 by fde-albe          #+#    #+#              #
-#    Updated: 2022/07/20 11:47:40 by rdas-nev         ###   ########.fr        #
+#    Updated: 2022/07/21 12:04:35 by rdas-nev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ RM			=		rm -f
 
 NAME		= 		pipex
 
-BONUS		=		pipex_bonus
+BONUS		=		pipex
 
 objs/%.o: srcs/%.c
 			@mkdir -p objs

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 14:31:50 by fde-albe          #+#    #+#             */
-/*   Updated: 2022/07/20 11:27:09 by rdas-nev         ###   ########.fr       */
+/*   Created: 2022/06/08 14:31:50 by rdas-nev          #+#    #+#             */
+/*   Updated: 2022/07/21 11:53:45 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ typedef struct s_cmds
 	char	**cmd1;
 	int		pid1;
 }			t_cmds;
+
+typedef struct s_chars
+{
+	int		ac;
+	char	**av;
+	char	**env;
+
+}		t_chars;
 
 char	*check_commands(char *raw_cmd, char **envp);
 
