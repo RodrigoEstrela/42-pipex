@@ -6,7 +6,7 @@
 #    By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 10:31:48 by fde-albe          #+#    #+#              #
-#    Updated: 2022/07/21 12:04:35 by rdas-nev         ###   ########.fr        #
+#    Updated: 2022/07/21 14:48:35 by rdas-nev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,6 @@ RM			=		rm -f
 
 NAME		= 		pipex
 
-BONUS		=		pipex
-
 objs/%.o: srcs/%.c
 			@mkdir -p objs
 			@cc $(CFLAGS) -c $< -o $@
@@ -45,21 +43,11 @@ $(NAME):    	$(OBJS)
 all:      	$(NAME)
 
 bonus:		$(OBJS_BONUS)
-			@cc $(OBJS_BONUS) $(CFLAGS) -o $(BONUS)
+			@cc $(OBJS_BONUS) $(CFLAGS) -o $(NAME)
+
 clean:
 			@$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean:		clean
-			@$(RM) $(NAME) $(BONUS)
-
-chrome:
-			@echo "Opening Google Chrome..."
-			@sleep 2
-			@launchapp /Applications/Google\ Chrome.app
-
-parrot:
-			@echo "Parroting..."
-			@sleep 2
-			@launchapp /Applications/iTerm.app
-
+			@$(RM) $(NAME)  
 re:         fclean all
