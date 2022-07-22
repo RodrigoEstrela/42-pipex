@@ -6,99 +6,69 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:58 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/06/20 15:09:00 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:57:23 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_strndup(const char *s1, int start, int end)
+static int	count_words(const char *str, char c)
 {
-	char	*str;
-	size_t	i;
+	int i;
+	int trigger;
 
 	i = 0;
-	str = (char *)malloc(sizeof(*s1) * (end - start + 1));
-	if (!str)
-		return (NULL);
-	while (s1[start] && start < end)
+	trigger = 0;
+	while (*str)
 	{
-		str[i] = s1[start];
-		i++;
-		start++;
-	}
-	str[i] = 0;
-	return (str);
-}
-
-static	int	strcount(char *s, char c)
-{
-	int	i;
-	int	count;
-	int	flag;
-
-	count = 0;
-	i = 0;
-	flag = 0;
-	while (s[i] != '\0')
-	{
-		while (s[i] == c && s[i] != '\0')
-		{	
-			i++;
-			flag = 1;
-		}
-		while (s[i] != c && s[i] != '\0')
+		if (*str != c && trigger == 0)
 		{
+			trigger = 1;
 			i++;
-			flag = 0;
 		}
-		count++;
+		else if (*str == c)
+			trigger = 0;
+		str++;
 	}
-	if (flag == 1)
-		count--;
-	return (count);
+	return (i);
 }
 
-static	char	**nome(char **strarray, char *s, char c, int i)
+static char	*word_dup(const char *str, int start, int finish)
 {
-	int	start;
-	int	end;
-	int	a;
-
-	start = 0;
-	end = 0;
-	a = 0;
-	while (i < strcount((char *)s, c))
-	{
-		while (s[a] == c && s[a++])
-		{
-			end++;
-			start++;
-		}
-		while (s[a] != c && s[a++])
-			end++;
-		strarray[i] = ft_strndup(s, start, end);
-		a++;
-		start = a;
-		i++;
-		end++;
-	}
-	strarray[i] = NULL;
-	return (strarray);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**strarray;
+	char	*word;
 	int		i;
 
 	i = 0;
-	strarray = NULL;
-	if (!s)
-		return (NULL);
-	strarray = (char **)malloc(strcount((char *)s, c) * sizeof(char *) + 1);
-	if (!strarray)
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
+}
+
+char		**ft_split(char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	int		index;
+	char	**split;
+
+	if (!s || !(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
 		return (0);
-	strarray = nome(strarray, (char *)s, c, i);
-	return (strarray);
+	i = 0;
+	j = 0;
+	index = -1;
+	while (i <= ft_strlen(s))
+	{
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		{
+			split[j++] = word_dup(s, index, i);
+			index = -1;
+		}
+		i++;
+	}
+	split[j] = 0;
+	return (split);
 }

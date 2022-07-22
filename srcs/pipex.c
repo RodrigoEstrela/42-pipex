@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/04 11:56:37 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:59:34 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	free_cmds(t_cmds *cmds)
 	while (cmds->cmd2[i])
 		free(cmds->cmd2[i++]);
 	free(cmds->cmd2);
+	free(cmds);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -46,7 +47,7 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 5)
 		exit(0);
-	cmds = malloc(sizeof(t_cmds) * 1);
+	cmds = malloc(sizeof(t_cmds));
 	if (!cmds)
 		exit(0);
 	cmds = cmds_initializer(cmds, av, envp);

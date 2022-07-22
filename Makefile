@@ -6,7 +6,7 @@
 #    By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 10:31:48 by fde-albe          #+#    #+#              #
-#    Updated: 2022/07/21 14:48:35 by rdas-nev         ###   ########.fr        #
+#    Updated: 2022/07/22 11:18:16 by rdas-nev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJS_BONUS	=		$(addprefix objs_bonus/,$(BONUS_SRCS:.c=.o))
 
 CFLAGS		=		-Wall -Wextra -Werror -g
 
-RM			=		rm -f
+RM		=		rm -f
 
 NAME		= 		pipex
 
