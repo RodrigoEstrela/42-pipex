@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/22 12:03:49 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/22 15:21:47 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ int	main(int ac, char **av, char **envp)
 	if (ft_strncmp(av[1], "here_doc", 8) == 0)
 	{
 		i_fd1_fd2[0] = 2;
-		i_fd1_fd2[2] = open(av[ac - 1], O_WRONLY | O_CREAT | O_APPEND, 777);
+		i_fd1_fd2[2] = open(av[ac - 1], O_WRONLY | O_CREAT | O_APPEND, 0000644);
 		ft_here_doc(av[2]);
 	}
 	else
 	{
 		i_fd1_fd2[0] = 1;
-		i_fd1_fd2[1] = open(av[1], O_RDONLY, 777);
-		i_fd1_fd2[2] = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 777);
+		i_fd1_fd2[1] = open(av[1], O_RDONLY, 0000644);
+		i_fd1_fd2[2] = open(av[ac - 1], O_RDWR | O_CREAT | O_TRUNC, 0000644);
 	}
 	do_the_things(cmds, strs, i_fd1_fd2, fd);
 	exit(0);

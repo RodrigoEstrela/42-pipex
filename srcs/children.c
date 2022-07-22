@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:35 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/06/20 15:08:38 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:07:39 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	child_two(t_cmds *cmds, char *str, int fd[2], char **envp)
 	pid2 = fork();
 	if (pid2 == 0)
 	{
-		fdout = open(str, O_TRUNC | O_CREAT | O_RDWR, 777);
+		fdout = open(str, O_TRUNC | O_CREAT | O_RDWR, 0644);
 		dup2(fdout, 1);
 		dup2(fd[0], 0);
 		close(fd[0]);
