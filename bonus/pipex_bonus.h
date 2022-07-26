@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 14:31:50 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/21 11:53:45 by rdas-nev         ###   ########.fr       */
+/*   Created: 2022/06/08 14:31:50 by fde-albe          #+#    #+#             */
+/*   Updated: 2022/07/25 11:56:25 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ char	*ft_exstrchr(char *s);
 char	*ft_strnldup(char *s1);
 
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
+
+void	*ft_calloc(size_t count, size_t size);
 
 #endif

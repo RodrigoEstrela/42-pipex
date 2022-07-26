@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:09:41 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/06/20 15:09:43 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/26 11:27:26 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (ft_strlen(s) < start)
 		return (ft_strdup(""));
 	if (ft_strlen(s) < len)
-		str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+		str = ft_calloc(sizeof(char), (ft_strlen(s) + 1));
 	else
-		str = (char *)malloc((len + 1) * sizeof(char));
+		str = ft_calloc((len + 1), sizeof(char));
 	if (!str)
 		return (NULL);
 	i = 0;

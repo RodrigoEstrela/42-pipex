@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:24:50 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/06/20 16:46:41 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/26 12:27:50 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	arranjar_cmd(char **cmd)
 	int		i;
 	int		tc;
 
-	i = 0;
-	while (cmd[++i])
+	i = 1;
+	while (cmd[i++])
 	{
 		tc = is_barra_e_hihfen(cmd[i], cmd[i + 1]);
 		if (tc == 1)

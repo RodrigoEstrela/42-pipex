@@ -6,11 +6,36 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/20 11:29:26 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:53:08 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"pipex_bonus.h"
+
+int	line_from_terminal(char **line)
+{
+	char	*buffer;
+	int		i;
+	int		r;
+	char	c;
+
+	i = 0;
+	r = 0;
+	buffer = (char *)ft_calloc(10000, 1);
+	r = read(0, &c, 1);
+	while (r && c != '\n' && c != '\0')
+	{
+		if (c != '\n' && c != '\0')
+			buffer[i] = c;
+		i++;
+		r = read(0, &c, 1);
+	}
+	buffer[i] = '\n';
+	buffer[++i] = '\0';
+	*line = buffer;
+	free(buffer);
+	return (r);
+}
 
 void	ft_here_doc(char *limiter)
 {
@@ -24,19 +49,17 @@ void	ft_here_doc(char *limiter)
 	if (reader == 0)
 	{	
 		close(fd[0]);
-		line = get_next_line(0);
-		while (ft_strncmp(line, limiter, ft_strlen(limiter)))
+		while (line_from_terminal(&line))
 		{
+			if (ft_strncmp(line, limiter, ft_strlen(limiter)) == 0)
+				exit(EXIT_SUCCESS);
 			write(fd[1], line, ft_strlen(line));
-			free(line);
-			line = get_next_line(0);
 		}
-		free(line);
-		exit(EXIT_SUCCESS);
 	}
 	else
 	{
 		close(fd[1]);
-		dup2(fd[0], 0);
+		dup2(fd[0], STDIN_FILENO);
+		wait(NULL);
 	}
 }

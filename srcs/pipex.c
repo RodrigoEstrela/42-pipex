@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/22 11:59:34 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:45:36 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ int	main(int ac, char **av, char **envp)
 	t_cmds	*cmds;
 
 	if (ac != 5)
+	{	
+		write(1, "wrong number of args\n", 21);
 		exit(0);
-	cmds = malloc(sizeof(t_cmds));
+	}
+	cmds = malloc(sizeof(t_cmds) * 1);
 	if (!cmds)
 		exit(0);
 	cmds = cmds_initializer(cmds, av, envp);

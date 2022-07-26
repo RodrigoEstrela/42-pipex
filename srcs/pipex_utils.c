@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 11:47:40 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/06/20 14:14:52 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:41:38 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ char	*check_commands(char *raw_cmd, char **envp)
 			return (tmp);
 		free(tmp);
 	}
+	write(1, "not comando mano bro\n", 21);
 	exit(0);
 }

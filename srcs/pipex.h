@@ -6,7 +6,7 @@
 /*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 14:31:50 by fde-albe          #+#    #+#             */
-/*   Updated: 2022/06/20 13:44:57 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:55:42 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ char	*ft_strchr(const char *s, int c);
 void	child_one(t_cmds *cmds, char *str, int fd[2], char **envp);
 
 void	child_two(t_cmds *cmds, char *str, int fd[2], char **envp);
+
+void	*ft_calloc(size_t count, size_t size);
 
 #endif
