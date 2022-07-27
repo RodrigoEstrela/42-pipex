@@ -20,22 +20,6 @@
 
 # define BUFFER_SIZE 10
 
-typedef struct s_cmds
-{
-	char	**cmd1;
-	int		pid1;
-}			t_cmds;
-
-typedef struct s_chars
-{
-	int		ac;
-	char	**av;
-	char	**env;
-
-}		t_chars;
-
-char	*check_commands(char *raw_cmd, char **envp);
-
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 char	**ft_split(char const *s, char c);
@@ -58,11 +42,11 @@ void	arranjar_cmd(char **cmd);
 
 char	*ft_strchr(const char *s, int c);
 
-void	child_one(t_cmds *cmds, int fd[2], char **envp);
+void	child_one(char *av, char **envp);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-void	ft_here_doc(char *limiter);
+void	ft_here_doc(char *limiter, int ac);
 
 char	*get_next_line(int fd);
 
@@ -73,5 +57,13 @@ char	*ft_strnldup(char *s1);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
 
 void	*ft_calloc(size_t count, size_t size);
+
+int	open_file(char *argv, int i);
+
+char	*find_path(char *cmd, char **envp);
+
+void	execute(char *av, char **envp);
+
+char	*ft_strnstr(const char	*big, const char *little, size_t len);
 
 #endif

@@ -12,14 +12,14 @@
 
 SRCS		=		pipex.c pipex_utils.c ft_memcmp.c ft_split.c ft_strlen.c \
 					ft_substr.c ft_strdup.c ft_strjoin.c ft_strchr.c children.c \
-					arranjar_cmd.c ficheirodasbarraspontoc.c ft_calloc.c \
+					arranjar_cmd.c ft_calloc.c ficheirodasbarraspontoc.c\
 
 OBJS 		=		$(addprefix objs/,$(SRCS:.c=.o))
 
 BONUS_SRCS	=		pipex_bonus.c pipex_utils.c ft_memcmp.c ft_split.c \
 					ft_substr.c ft_strdup.c children.c \
-					arranjar_cmd.c ficheirodasbarraspontoc.c  heredoc.c \
-				get_next_line.c get_next_line_utils.c  ft_calloc.c \
+					heredoc.c get_next_line.c get_next_line_utils.c \
+					ft_calloc.c \
 
 OBJS_BONUS	=		$(addprefix objs_bonus/,$(BONUS_SRCS:.c=.o))
 

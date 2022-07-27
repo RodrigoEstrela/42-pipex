@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   children.c                                         :+:      :+:    :+:   */
@@ -12,27 +12,44 @@
 
 #include"pipex_bonus.h"
 
-void	child_one(t_cmds *cmds, int fd[2], char **envp)
+void	execute(char *av, char **envp)
 {
-	int	i;
+		int	i;
+		char **cmd;
+		char *path;
 
-	i = -1;
+		i = -1;
+		cmd = ft_split(av, ' ');
+		path = find_path(cmd[0], envp);
+		if (!path)
+		{
+			while (cmd[++i])
+				free(cmd[i]);
+			free(cmd);
+			exit(EXIT_FAILURE);
+		}
+		if (execve(path, cmd, envp) == -1)
+			exit(EXIT_FAILURE);
+}
+
+void	child_one(char *av, char **envp)
+{
+	pid_t	pid;
+	int	fd[2];
+
 	if (pipe(fd) == -1)
 		exit(0);
-	cmds->pid1 = fork();
-	if (cmds->pid1 == 0)
+	pid = fork();
+	if (pid == 0)
 	{
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
-		execve(cmds->cmd1[0], cmds->cmd1, envp);
-		exit(0);
-		while (cmds->cmd1[++i])
-			free(cmds->cmd1[i]);
+		execute(av, envp);
 	}
 	else
 	{
 		close(fd[1]);
 		dup2(fd[0], STDIN_FILENO);
-		waitpid(cmds->pid1, NULL, 0);
+		waitpid(pid, NULL, 0);
 	}
 }

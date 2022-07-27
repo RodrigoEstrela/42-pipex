@@ -37,12 +37,16 @@ int	line_from_terminal(char **line)
 	return (r);
 }
 
-void	ft_here_doc(char *limiter)
+void	ft_here_doc(char *limiter, int ac)
 {
 	int		fd[2];
 	int		reader;
 	char	*line;
 
+	if (ac < 6)
+	{
+		write(1, "wrong number of args for heredoc\n", 33);
+	}
 	if (pipe(fd) == -1)
 		exit(0);
 	reader = fork();

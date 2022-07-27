@@ -12,73 +12,58 @@
 
 #include "pipex_bonus.h"
 
-t_cmds	*cmds_initializer(t_cmds *cmds, char **av, char **envp, int i)
+char	*find_path(char *cmd, char **envp)
 {
-	cmds->cmd1 = ft_split(av[i], ' ');
-	free(cmds->cmd1[0]);
-	cmds->cmd1[0] = check_commands(av[i], envp);
-	arranjar_cmd(cmds->cmd1);
-	return (cmds);
-}
+	char	**paths;
+	char	*path;
+	int		i;
+	char	*part_path;
 
-void	free_cmds(t_cmds *cmds)
-{
-	int	i;
-
-	i = -1;
-	while (cmds->cmd1[++i])
-		free(cmds->cmd1[i]);
-	free(cmds->cmd1);
-}
-
-void	do_cmds_things(t_cmds *cmds, char **envp, int *fd)
-{
-	child_one(cmds, fd, envp);
-	free_cmds(cmds);
-}
-
-void	do_the_things(t_cmds *cmds, t_chars *strs, int *i_fd1_fd2, int *fd)
-{
-	while (++i_fd1_fd2[0] < strs->ac - 2)
+	i = 0;
+	while (ft_strnstr(envp[i], "PATH", 4) == 0)
+		i++;
+	paths = ft_split(envp[i] + 5, ':');
+	i = 0;
+	while (paths[i])
 	{
-		cmds = cmds_initializer(cmds, strs->av, strs->env, i_fd1_fd2[0]);
-		do_cmds_things(cmds, strs->env, fd);
+		part_path = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(part_path, cmd);
+		free(part_path);
+		if (access(path, F_OK) == 0)
+			return (path);
+		free(path);
+		i++;
 	}
-	cmds = cmds_initializer(cmds, strs->av, strs->env, strs->ac - 2);
-	dup2(i_fd1_fd2[2], STDOUT_FILENO);
-	execve(cmds->cmd1[0], cmds->cmd1, strs->env);
-	free_cmds(cmds);
-	free(strs);
-	exit(0);
+	i = -1;
+	while (paths[++i])
+		free(paths[i]);
+	free(paths);
+	return (0);
 }
 
 int	main(int ac, char **av, char **envp)
 {
-	t_cmds	*cmds;
-	t_chars	*strs;
-	int		fd[2];
 	int		*i_fd1_fd2;
 
 	i_fd1_fd2 = (int [3]){0, 0, 0};
-	cmds = ft_calloc(sizeof(t_cmds), 1);
-	strs = ft_calloc(sizeof(t_chars), 1);
-	strs->ac = ac;
-	strs->av = av;
-	strs->env = envp;
-	if (ft_strncmp(av[1], "here_doc", 8) == 0)
+	if (ac >= 5)
 	{
-		i_fd1_fd2[0] = 3;
-		i_fd1_fd2[2] = open(av[ac - 1], 0);
-		ft_here_doc(av[2]);
+		if (ft_strncmp(av[1], "here_doc", 8) == 0)
+		{
+			i_fd1_fd2[0] = 3;
+			i_fd1_fd2[2] = open_file(av[ac - 1], 0);
+			ft_here_doc(av[2], ac);
+		}
+		else
+		{
+			i_fd1_fd2[0] = 2;
+			i_fd1_fd2[1] = open_file(av[1], 2);
+			i_fd1_fd2[2] = open_file(av[ac - 1], 1);
+			dup2(i_fd1_fd2[1], STDIN_FILENO);
+		}
+		while(i_fd1_fd2[0] < ac -2)
+			child_one(av[i_fd1_fd2[0]++], envp);
+		dup2(i_fd1_fd2[2], STDOUT_FILENO);
+		execute(av[ac - 2], envp);
 	}
-	else
-	{
-		i_fd1_fd2[0] = 2;
-		i_fd1_fd2[1] = open(av[1], 2);
-		i_fd1_fd2[2] = open(av[ac - 1], 1);
-		dup2(i_fd1_fd2[1], STDIN_FILENO);
-	}
-	while(i < ac -2)
-		child_one()	
-//	do_the_things(cmds, strs, i_fd1_fd2, fd);
 }
