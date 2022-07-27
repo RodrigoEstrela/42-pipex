@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   children.c                                         :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:35 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/26 16:47:05 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:07:12 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 void	execute(char *av, char **envp)
 {
-		int	i;
-		char **cmd;
-		char *path;
+	int		i;
+	char	**cmd;
+	char	*path;
 
-		i = -1;
-		cmd = ft_split(av, ' ');
-		path = find_path(cmd[0], envp);
-		if (!path)
-		{
-			while (cmd[++i])
-				free(cmd[i]);
-			free(cmd);
-			exit(EXIT_FAILURE);
-		}
-		if (execve(path, cmd, envp) == -1)
-			exit(EXIT_FAILURE);
+	i = -1;
+	cmd = ft_split(av, ' ');
+	path = find_path(cmd[0], envp);
+	if (!path)
+	{
+		while (cmd[++i])
+			free(cmd[i]);
+		free(cmd);
+		exit(EXIT_FAILURE);
+	}
+	if (execve(path, cmd, envp) == -1)
+		exit(EXIT_FAILURE);
 }
 
 void	child_one(char *av, char **envp)
 {
 	pid_t	pid;
-	int	fd[2];
+	int		fd[2];
 
 	if (pipe(fd) == -1)
 		exit(0);

@@ -6,7 +6,7 @@
 /*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 14:31:50 by fde-albe          #+#    #+#             */
-/*   Updated: 2022/07/25 11:56:25 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:08:26 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ size_t	ft_strlcpy(char *dst, char *src, size_t size);
 
 void	*ft_calloc(size_t count, size_t size);
 
-int	open_file(char *argv, int i);
+int		open_file(char *argv, int i);
 
 char	*find_path(char *cmd, char **envp);
 

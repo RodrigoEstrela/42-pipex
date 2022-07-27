@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 11:47:40 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/20 15:37:07 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:08:54 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ int	open_file(char *argv, int i)
 
 	file = 0;
 	if (i == 0)
-		file = open(argv, O_WRONLY | O_CREAT | O_APPEND, 0777);
+		file = open(argv, O_WRONLY | O_CREAT | O_APPEND, 0444);
 	else if (i == 1)
-		file = open(argv, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		file = open(argv, O_WRONLY | O_CREAT | O_TRUNC, 0444);
 	else if (i == 2)
-		file = open(argv, O_RDONLY, 0777);
+		file = open(argv, O_RDONLY, 0444);
 	if (file == -1)
 		exit(EXIT_FAILURE);
 	return (file);

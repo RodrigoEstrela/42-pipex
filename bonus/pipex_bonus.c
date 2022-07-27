@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/26 17:00:14 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:09:53 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int ac, char **av, char **envp)
 			i_fd1_fd2[2] = open_file(av[ac - 1], 1);
 			dup2(i_fd1_fd2[1], STDIN_FILENO);
 		}
-		while(i_fd1_fd2[0] < ac -2)
+		while (i_fd1_fd2[0] < ac -2)
 			child_one(av[i_fd1_fd2[0]++], envp);
 		dup2(i_fd1_fd2[2], STDOUT_FILENO);
 		execute(av[ac - 2], envp);

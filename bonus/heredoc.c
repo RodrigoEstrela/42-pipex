@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:08:13 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/07/26 16:53:08 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/07/27 19:09:32 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ void	ft_here_doc(char *limiter, int ac)
 	char	*line;
 
 	if (ac < 6)
-	{
 		write(1, "wrong number of args for heredoc\n", 33);
-	}
 	if (pipe(fd) == -1)
 		exit(0);
 	reader = fork();
